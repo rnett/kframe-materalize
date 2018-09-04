@@ -2,11 +2,12 @@ package com.rnett.kframe.materalize
 
 import com.rnett.kframe.dom.*
 import com.rnett.kframe.elements.div
+import com.rnett.kframe.elements.script
 
 class Modal internal constructor(parent: Element?, klass: String, builder: ElementTypeBuilder<Modal>, vararg attrs: Pair<String, Any>)
     : TypedElement<Modal>(parent, builder, "div", "modal $klass", *attrs) {
 
-    private var script: Element? = null
+    private var _script: Element? = null
 
     init {
         id = "modal$elementID"
@@ -14,21 +15,15 @@ class Modal internal constructor(parent: Element?, klass: String, builder: Eleme
     }
 
     fun open() {
-        script?.delete(true)
+        _script?.delete(true)
 
-        script = script { +"\$('#$id').modal('open');" }
-
-        if (script != null)
-            +script!!
+        _script = script { +"\$('#$id').modal('open');" }
     }
 
     fun close() {
-        script?.delete(true)
+        _script?.delete(true)
 
-        script = script { +"\$('#$id').modal('close');" }
-
-        if (script != null)
-            +script!!
+        _script = script { +"\$('#$id').modal('close');" }
     }
 }
 
