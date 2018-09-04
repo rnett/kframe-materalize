@@ -19,7 +19,7 @@ fun Element.centerAlign(klass: String = "", vararg attrs: Pair<String, Any>, bui
 fun Element.middleAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
         div("center-align valign-wrapper $klass", builder = builder, attrs = *attrs)
 
-fun <T : Element> T.valAlign(): T {
+fun <T : Element> T.valAlignThis(): T {
     this addClass "valign-wrapper"
     return this
 }
@@ -29,8 +29,14 @@ fun <T : Element> T.leftAlign(): T {
     return this
 }
 
-fun <T : Element> T.centerAlign(): T {
+fun <T : Element> T.centerAlignThis(): T {
     this addClass "center-align"
+    return this
+}
+
+fun <T : Element> T.middleAlignThis(): T {
+    this addClass "center-align"
+    this addClass "valign-wrapper"
     return this
 }
 
