@@ -129,3 +129,5 @@ infix fun <T : Element> T.wavesCircle(color: String): T {
         this addClass "waves-$color"
     return this
 }
+
+fun <T : Element> T.wavesLight() = this.waves("light")
