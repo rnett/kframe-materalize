@@ -22,17 +22,17 @@ fun Element.flatBtn(klass: String = "", href: String = "", vararg attrs: Pair<St
         a(href, "btn-flat $klass", builder = builder, attrs = *attrs)
 
 
-fun <T : Element> T.btn(): T {
+fun <T : Element> T.btnThis(): T {
     this addClass "btn"
     return this
 }
 
-fun <T : Element> T.flatBtn(): T {
+fun <T : Element> T.flatBtnThis(): T {
     this addClass "btn-flat"
     return this
 }
 
-infix fun <T : Element> T.btn(value: String): T {
+infix fun <T : Element> T.btnThis(value: String): T {
     this addClass "btn-$value"
     return this
 }
