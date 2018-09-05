@@ -25,3 +25,7 @@ fun Element.icon(icon: String, size: String, klass: String = "", vararg attrs: P
 @KFrameElementDSL
 fun Element.fontSizedIcon(icon: String, fontSize: String, klass: String = "", vararg attrs: Pair<String, Any>) =
         icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to fontSize)))
+
+@KFrameElementDSL
+fun Element.fontSizedIcon(icon: String, fontSize: Int, klass: String = "", vararg attrs: Pair<String, Any>) =
+        icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to "${fontSize}px")))
