@@ -6,6 +6,7 @@ import com.rnett.kframe.dom.KFrameElementDSL
 import com.rnett.kframe.elements.a
 import com.rnett.kframe.elements.div
 import com.rnett.kframe.elements.img
+import java.lang.Math.abs
 
 @KFrameElementDSL
 fun Element.valAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
@@ -76,7 +77,7 @@ fun <T : Element> T.color(color: String, lighten: Int = 0): T {
     if (lighten > 0)
         this addClass "lighten-$lighten"
     else if (lighten < 0)
-        this addClass "darken-$lighten"
+        this addClass "darken-${abs(lighten)}"
     return this
 }
 
@@ -85,7 +86,7 @@ fun <T : Element> T.textColor(color: String, lighten: Int = 0): T {
     if (lighten > 0)
         this addClass "text-lighten-$lighten"
     else if (lighten < 0)
-        this addClass "text-darken-$lighten"
+        this addClass "text-darken-${abs(lighten)}"
     return this
 }
 
