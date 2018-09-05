@@ -8,7 +8,7 @@ class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: P
     : TypedElement<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
-        script { +"\$('.tabs').tabs();" }
+        parent?.script { +"\$('.tabs').tabs();" }
     }
 
     private val tabs = mutableMapOf<String, Pair<Tab, Element>>()
