@@ -5,7 +5,7 @@ import com.rnett.kframe.elements.a
 import com.rnett.kframe.elements.script
 
 class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: Pair<String, Any>)
-    : TypedElement<Tabs>(parent, {}, "ul", klass, *attrs) {
+    : TypedElement<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
         script { +"\$('.tabs').tabs();" }
@@ -26,9 +26,6 @@ class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: P
         +e
         return e
     }
-
-    private var nextID = 0
-    val nextId get() = nextID++
 
     fun select(tab: Tab): Tabs {
         return select(tab.id)
@@ -53,7 +50,7 @@ class Tab internal constructor(parent: Element?, val tabs: Tabs, klass: String,
     val listElement: Element
 
     init {
-        id = "tab${tabs.nextId}"
+        id = "tab$elementID"
         listElement = tabs.addTab(this, liKlass, disabled, tabBuilder)
         if (default)
             tabs.select(this)
