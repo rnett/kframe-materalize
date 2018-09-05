@@ -27,6 +27,8 @@ class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: P
         return e
     }
 
+    fun nextId(): Int = page.elements.values.filter { it is Tab }.count()
+
     fun select(tab: Tab): Tabs {
         return select(tab.id)
     }
@@ -50,7 +52,7 @@ class Tab internal constructor(parent: Element?, val tabs: Tabs, klass: String,
     val listElement: Element
 
     init {
-        id = "tab$elementID"
+        id = "tab${tabs.nextId()}"
         listElement = tabs.addTab(this, liKlass, disabled, tabBuilder)
         if (default)
             tabs.select(this)
