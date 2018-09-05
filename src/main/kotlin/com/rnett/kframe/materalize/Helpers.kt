@@ -131,3 +131,12 @@ infix fun <T : Element> T.wavesCircle(color: String): T {
 }
 
 fun <T : Element> T.wavesLight() = this.waves("light")
+
+@KFrameElementDSL
+fun Element.inputField(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
+        div("input-field $klass", builder = builder, attrs = *attrs)
+
+fun <T : Element> T.inputFieldThis(): T {
+    this addClass "input-field"
+    return this
+}
