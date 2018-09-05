@@ -140,3 +140,8 @@ fun <T : Element> T.inputFieldThis(): T {
     this addClass "input-field"
     return this
 }
+
+fun <T : Element> T.hoverable(): T {
+    this addClass "hoverable"
+    return this
+}
