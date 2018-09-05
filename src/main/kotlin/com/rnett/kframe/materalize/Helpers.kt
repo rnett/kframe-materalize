@@ -71,7 +71,7 @@ infix fun <T : Element> T.zDepth(depth: Int): T {
     return this
 }
 
-fun Element.color(color: String, lighten: Int = 0): Element {
+fun <T : Element> T.color(color: String, lighten: Int = 0): T {
     this addClass color
     if (lighten > 0)
         this addClass "lighten-$lighten"
@@ -80,7 +80,7 @@ fun Element.color(color: String, lighten: Int = 0): Element {
     return this
 }
 
-fun Element.textColor(color: String, lighten: Int = 0): Element {
+fun <T : Element> T.textColor(color: String, lighten: Int = 0): T {
     this addClass "$color-text"
     if (lighten > 0)
         this addClass "text-lighten-$lighten"
