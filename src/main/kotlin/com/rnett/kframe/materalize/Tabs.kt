@@ -39,8 +39,8 @@ class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: P
 }
 
 @KFrameElementDSL
-fun Element.tabs(klass: String = "", vararg attrs: Pair<String, Any>) =
-        Tabs(this, klass, *attrs)
+fun Element.tabs(fixedWidth: Boolean = true, klass: String = "", vararg attrs: Pair<String, Any>) =
+        Tabs(this, "$klass${if (fixedWidth) " tabs-fixed-width" else ""}", *attrs)
 
 class Tab internal constructor(parent: Element?, val tabs: Tabs, klass: String,
                                liKlass: String, default: Boolean = false, disabled: Boolean, tabBuilder: ElementBuilder,
