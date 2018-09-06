@@ -42,7 +42,7 @@ class Modal internal constructor(parent: Element?, klass: String, builder: Eleme
 
 @KFrameElementDSL
 fun Element.modal(fixedFooter: Boolean = false, bottomSheet: Boolean = false, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementTypeBuilder<Modal> = {}) =
-        Modal(this, "$klass${if (fixedFooter) " modal-fixed-footer" else ""}${if (fixedFooter) " bottom-sheet" else ""}", builder, *attrs)
+        Modal(this, "$klass${if (fixedFooter) " modal-fixed-footer" else ""}${if (bottomSheet) " bottom-sheet" else ""}", builder, *attrs)
 
 @KFrameElementDSL
 fun Modal.content(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
