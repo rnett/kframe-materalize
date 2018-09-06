@@ -2,13 +2,12 @@ package com.rnett.kframe.materalize
 
 import com.rnett.kframe.dom.*
 import com.rnett.kframe.elements.a
-import com.rnett.kframe.elements.script
 
 class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: Pair<String, Any>)
     : TypedElement<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
-        parent?.script { +"\$('.tabs').tabs();" }
+        this runJS "\$('.tabs').tabs();"
     }
 
     private val tabs = mutableMapOf<String, Pair<Tab, Element>>()
