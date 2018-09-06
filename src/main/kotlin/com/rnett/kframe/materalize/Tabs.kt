@@ -7,7 +7,7 @@ class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: P
     : TypedElement<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
-        this runJS "\$('.tabs').tabs();"
+        this runJS "window.setTimeout(function(){ \$('.tabs').tabs(); }, 100);"
     }
 
     private val tabs = mutableMapOf<String, Pair<Tab, Element>>()
