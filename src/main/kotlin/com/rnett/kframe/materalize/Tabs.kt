@@ -7,6 +7,7 @@ class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: P
     : TypedElement<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
+        this runJS "window.setTimeout(function(){ \$('.tabs').tabs(); }, 100);"
         this runJS "\$(document).ready(function(){ \$('.tabs').tabs(); });"
     }
 
