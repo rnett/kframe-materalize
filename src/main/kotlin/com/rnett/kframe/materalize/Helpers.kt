@@ -5,15 +5,15 @@ import com.rnett.kframe.elements.*
 import java.lang.Math.abs
 
 @KFrameElementDSL
-fun DisplayElement<*>.valAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.valAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("valign-wrapper $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.centerAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.centerAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("center-align $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.middleAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.middleAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("center-align valign-wrapper $klass", builder = builder, attrs = *attrs)
 
 fun <T : Element<*>> T.valAlignThis(): T {
@@ -101,7 +101,7 @@ infix fun <T : Element<*>> T.activate(active: Boolean): T {
 }
 
 @KFrameElementDSL
-fun DisplayElement<*>.responsiveImage(src: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ImageElement> = {}) =
+fun AnyDisplayElement.responsiveImage(src: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ImageElement> = {}) =
         img(src, klass = "responsive-img $klass", builder = builder, attrs = *attrs)
 
 fun <T : Element<*>> T.circle(): T {
@@ -110,7 +110,7 @@ fun <T : Element<*>> T.circle(): T {
 }
 
 @KFrameElementDSL
-fun DisplayElement<*>.breadcrumb(href: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
+fun AnyDisplayElement.breadcrumb(href: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         a(href, "breadcrumb $klass", builder = builder, attrs = *attrs)
 
 infix fun <T : Element<*>> T.waves(color: String): T {
@@ -130,7 +130,7 @@ infix fun <T : Element<*>> T.wavesCircle(color: String): T {
 fun <T : Element<*>> T.wavesLight() = this.waves("light")
 
 @KFrameElementDSL
-fun DisplayElement<*>.inputField(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.inputField(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("input-field $klass", builder = builder, attrs = *attrs)
 
 fun <T : Element<*>> T.inputFieldThis(): T {

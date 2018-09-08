@@ -6,11 +6,11 @@ import com.rnett.kframe.elements.li
 import com.rnett.kframe.elements.ul
 
 @KFrameElementDSL
-fun DisplayElement<*>.collection(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ListElement> = {}) =
+fun AnyDisplayElement.collection(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ListElement> = {}) =
         ul("collection $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.collectionHeadered(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ListElement> = {}) =
+fun AnyDisplayElement.collectionHeadered(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ListElement> = {}) =
         ul("collection with-header $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL

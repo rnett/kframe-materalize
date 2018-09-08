@@ -39,7 +39,7 @@ class Modal internal constructor(parent: Element<*>??, klass: String, builder: E
 }
 
 @KFrameElementDSL
-fun DisplayElement<*>.modal(fixedFooter: Boolean = false, bottomSheet: Boolean = false, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Modal> = {}) =
+fun AnyDisplayElement.modal(fixedFooter: Boolean = false, bottomSheet: Boolean = false, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Modal> = {}) =
         Modal(this, "$klass${if (fixedFooter) " modal-fixed-footer" else ""}${if (bottomSheet) " bottom-sheet" else ""}", builder, *attrs)
 
 @KFrameElementDSL
@@ -51,25 +51,25 @@ fun Modal.footer(klass: String = "", vararg attrs: Pair<String, Any>, builder: S
         div("modal-footer $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.openModalBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
+fun AnyDisplayElement.openModalBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         btn("modal-trigger $klass", "#${modal.id}", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.closeModalBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
+fun AnyDisplayElement.closeModalBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         btn("modal-close $klass", "#${modal.id}", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.openModalBtn(modal: Modal, size: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
+fun AnyDisplayElement.openModalBtn(modal: Modal, size: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         btn(size, "modal-trigger $klass", "#${modal.id}", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.closeModalBtn(modal: Modal, size: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
+fun AnyDisplayElement.closeModalBtn(modal: Modal, size: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         btn(size, "modal-close $klass", "#${modal.id}", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.openModalFlatBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
+fun AnyDisplayElement.openModalFlatBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         flatBtn("modal-trigger $klass", "#${modal.id}", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.closeModalFlatBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
+fun AnyDisplayElement.closeModalFlatBtn(modal: Modal, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         flatBtn("modal-close $klass", "#${modal.id}", builder = builder, attrs = *attrs)

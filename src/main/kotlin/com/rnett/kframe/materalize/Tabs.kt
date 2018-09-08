@@ -42,7 +42,7 @@ class Tabs internal constructor(parent: Element<*>??, klass: String, vararg attr
 }
 
 @KFrameElementDSL
-fun DisplayElement<*>.tabs(fixedWidth: Boolean = true, klass: String = "", vararg attrs: Pair<String, Any>) =
+fun AnyDisplayElement.tabs(fixedWidth: Boolean = true, klass: String = "", vararg attrs: Pair<String, Any>) =
         Tabs(this, "$klass${if (fixedWidth) " tabs-fixed-width" else ""}", *attrs)
 
 class Tab internal constructor(parent: Element<*>??, val tabs: Tabs, klass: String,
@@ -83,5 +83,5 @@ class Tab internal constructor(parent: Element<*>??, val tabs: Tabs, klass: Stri
 }
 
 @KFrameElementDSL
-fun DisplayElement<*>.tab(tabs: Tabs, klass: String = "", liKlass: String = "", tabBuilder: ElementBuilder<A> = {}, default: Boolean = false, disabled: Boolean = false, vararg attrs: Pair<String, Any>, builder: ElementBuilder<Tab> = {}) =
+fun AnyDisplayElement.tab(tabs: Tabs, klass: String = "", liKlass: String = "", tabBuilder: ElementBuilder<A> = {}, default: Boolean = false, disabled: Boolean = false, vararg attrs: Pair<String, Any>, builder: ElementBuilder<Tab> = {}) =
         Tab(this, tabs, klass, liKlass, default, disabled, tabBuilder, builder, *attrs)

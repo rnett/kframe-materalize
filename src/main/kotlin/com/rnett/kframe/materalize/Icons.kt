@@ -1,6 +1,6 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.DisplayElement
+import com.rnett.kframe.dom.AnyDisplayElement
 import com.rnett.kframe.dom.KFrameElementDSL
 import com.rnett.kframe.dom.StandardDisplayElement
 import com.rnett.kframe.dom.Style
@@ -9,7 +9,7 @@ import com.rnett.kframe.elements.i
 import com.rnett.kframe.elements.text
 
 @KFrameElementDSL
-fun DisplayElement<*>.icon(icon: String, klass: String = "", vararg attrs: Pair<String, Any>): StandardDisplayElement {
+fun AnyDisplayElement.icon(icon: String, klass: String = "", vararg attrs: Pair<String, Any>): StandardDisplayElement {
 
     if (page.head.children.none { it.tag == "link" && it.attributes["href"] == "https://fonts.googleapis.com/icon?family=Material+Icons" })
         page.head.externalStylesheet("https://fonts.googleapis.com/icon?family=Material+Icons")
@@ -20,13 +20,13 @@ fun DisplayElement<*>.icon(icon: String, klass: String = "", vararg attrs: Pair<
 }
 
 @KFrameElementDSL
-fun DisplayElement<*>.icon(icon: String, size: String, klass: String = "", vararg attrs: Pair<String, Any>) =
+fun AnyDisplayElement.icon(icon: String, size: String, klass: String = "", vararg attrs: Pair<String, Any>) =
         icon(icon = icon, klass = "$size $klass", attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.fontSizedIcon(icon: String, fontSize: String, klass: String = "", vararg attrs: Pair<String, Any>) =
+fun AnyDisplayElement.fontSizedIcon(icon: String, fontSize: String, klass: String = "", vararg attrs: Pair<String, Any>) =
         icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to fontSize)))
 
 @KFrameElementDSL
-fun DisplayElement<*>.fontSizedIcon(icon: String, fontSize: Int, klass: String = "", vararg attrs: Pair<String, Any>) =
+fun AnyDisplayElement.fontSizedIcon(icon: String, fontSize: Int, klass: String = "", vararg attrs: Pair<String, Any>) =
         icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to "${fontSize}px")))

@@ -8,7 +8,7 @@ class Row(parent: Element<*>?, builder: ElementBuilder<Row>, klass: String, vara
     : DisplayElement<Row>(parent, builder, "div", "row $klass", *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.row(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Row> = {}) =
+fun AnyDisplayElement.row(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Row> = {}) =
         Row(this, builder, klass, *attrs)
 
 
@@ -29,15 +29,15 @@ fun Row.col(size: String, klass: String = "", vararg attrs: Pair<String, Any>, b
         Col(this, builder, "$size $klass", *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.divider(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.divider(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("divider $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.section(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.section(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("section $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.container(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.container(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("container $klass", builder = builder, attrs = *attrs)
 
 fun Col.offset(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): Col {

@@ -4,7 +4,7 @@ import com.rnett.kframe.dom.*
 
 
 @KFrameElementDSL
-fun DisplayElement<*>.blockquote(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
+fun AnyDisplayElement.blockquote(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         StandardDisplayElement(this, builder, "blockquote", klass, *attrs)
 
 
