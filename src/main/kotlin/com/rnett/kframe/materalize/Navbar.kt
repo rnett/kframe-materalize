@@ -1,13 +1,13 @@
 package com.rnett.kframe.materalize
 
 import com.rnett.kframe.dom.DisplayElement
-import com.rnett.kframe.dom.DisplayElementBuilder
 import com.rnett.kframe.dom.ElementBuilder
 import com.rnett.kframe.dom.KFrameElementDSL
+import com.rnett.kframe.dom.StandardDisplayBuilder
 import com.rnett.kframe.elements.*
 
 @KFrameElementDSL
-fun DisplayElement<*>.navbar(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.navbar(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         nav().div("nav-wrapper $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
@@ -40,7 +40,7 @@ fun DisplayElement<*>.centeredLogo(klass: String = "", vararg attrs: Pair<String
         logo("center $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.extendedNav(contentBuilder: DisplayElementBuilder = {}, wrapperKlass: String = "", contentKlass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.extendedNav(contentBuilder: StandardDisplayBuilder = {}, wrapperKlass: String = "", contentKlass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         nav("nav-extended") {
             div("nav-wrapper $wrapperKlass", builder = builder, attrs = *attrs)
             div("nav-content $contentKlass", builder = contentBuilder)

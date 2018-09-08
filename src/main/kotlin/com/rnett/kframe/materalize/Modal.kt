@@ -43,11 +43,11 @@ fun DisplayElement<*>.modal(fixedFooter: Boolean = false, bottomSheet: Boolean =
         Modal(this, "$klass${if (fixedFooter) " modal-fixed-footer" else ""}${if (bottomSheet) " bottom-sheet" else ""}", builder, *attrs)
 
 @KFrameElementDSL
-fun Modal.content(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun Modal.content(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("modal-content $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun Modal.footer(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun Modal.footer(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("modal-footer $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL

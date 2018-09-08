@@ -1,23 +1,23 @@
 package com.rnett.kframe.materalize
 
 import com.rnett.kframe.dom.DisplayElement
-import com.rnett.kframe.dom.DisplayElementBuilder
 import com.rnett.kframe.dom.KFrameElementDSL
+import com.rnett.kframe.dom.StandardDisplayBuilder
 import com.rnett.kframe.elements.div
 import com.rnett.kframe.elements.divs
 
 @KFrameElementDSL
-fun DisplayElement<*>.progressBarStatic(progressPercent: Int, barKlass: String = "", backgroundKlass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.progressBarStatic(progressPercent: Int, barKlass: String = "", backgroundKlass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("progress $backgroundKlass").div("determinate $barKlass", builder = builder, attrs = *attrs).invoke {
             style.width = "$progressPercent%"
         }
 
 @KFrameElementDSL
-fun DisplayElement<*>.progressBar(barKlass: String = "", backgroundKlass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.progressBar(barKlass: String = "", backgroundKlass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("progress $backgroundKlass").div("indeterminate $barKlass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.circleSpinner(color: String = "", size: String = "", klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.circleSpinner(color: String = "", size: String = "", klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("preloader-wrapper $klass${if (size.isNotBlank()) " $size" else ""}", builder = builder, attrs = *attrs).invoke {
             div("spinner-layer") {
                 style["border-color"] = color
@@ -29,7 +29,7 @@ fun DisplayElement<*>.circleSpinner(color: String = "", size: String = "", klass
 
 @KFrameElementDSL
 fun DisplayElement<*>.circleSpinnerMulticolor(color1: String = "", color2: String = "", color3: String = "", color4: String = "",
-                                              size: String = "", klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+                                              size: String = "", klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("preloader-wrapper $klass${if (size.isNotBlank()) " $size" else ""}", builder = builder, attrs = *attrs).invoke {
             div("spinner-layer spinner-blue") {
                 if (color1.isNotBlank())

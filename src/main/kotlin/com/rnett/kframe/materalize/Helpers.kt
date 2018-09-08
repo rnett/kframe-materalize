@@ -5,15 +5,15 @@ import com.rnett.kframe.elements.*
 import java.lang.Math.abs
 
 @KFrameElementDSL
-fun DisplayElement<*>.valAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.valAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("valign-wrapper $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.centerAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.centerAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("center-align $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun DisplayElement<*>.middleAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.middleAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("center-align valign-wrapper $klass", builder = builder, attrs = *attrs)
 
 fun <T : Element<*>> T.valAlignThis(): T {
@@ -130,7 +130,7 @@ infix fun <T : Element<*>> T.wavesCircle(color: String): T {
 fun <T : Element<*>> T.wavesLight() = this.waves("light")
 
 @KFrameElementDSL
-fun DisplayElement<*>.inputField(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun DisplayElement<*>.inputField(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("input-field $klass", builder = builder, attrs = *attrs)
 
 fun <T : Element<*>> T.inputFieldThis(): T {

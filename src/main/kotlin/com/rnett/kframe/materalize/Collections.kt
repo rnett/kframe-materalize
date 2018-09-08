@@ -14,15 +14,15 @@ fun DisplayElement<*>.collectionHeadered(klass: String = "", vararg attrs: Pair<
         ul("collection with-header $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun ListElement.collectionItem(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun ListElement.collectionItem(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         li("collection-item $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun ListElement.collectionItemAvatar(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun ListElement.collectionItemAvatar(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         li("collection-item avatar $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun ListElement.collectionItemActive(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+fun ListElement.collectionItemActive(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         li("collection-item $klass", builder = builder, attrs = *attrs).active()
 
 fun <T : Element<*>> T.secondaryContent(): T {
