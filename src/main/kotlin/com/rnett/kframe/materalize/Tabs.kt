@@ -1,26 +1,27 @@
 package com.rnett.kframe.materalize
 
 import com.rnett.kframe.dom.*
+import com.rnett.kframe.elements.A
 import com.rnett.kframe.elements.a
 
-class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: Pair<String, Any>)
-    : TypedElement<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
+class Tabs internal constructor(parent: Element<*>??, klass: String, vararg attrs: Pair<String, Any>)
+    : Element<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
         this runJS "window.setTimeout(function(){ \$('.tabs').tabs(); }, 100);"
         this runJS "\$(document).ready(function(){ \$('.tabs').tabs(); });"
     }
 
-    private val tabs = mutableMapOf<String, Pair<Tab, Element>>()
+    private val tabs = mutableMapOf<String, Pair<Tab, StandardDisplayElement>>()
 
-    fun addTab(tab: Tab, liKlass: String, disabled: Boolean, builder: ElementBuilder = {}): Element {
+    fun addTab(tab: Tab, liKlass: String, disabled: Boolean, builder: ElementBuilder<A> = {}): StandardDisplayElement {
         val t = addTabElement(tab.id, liKlass, disabled, builder)
         tabs[tab.id] = Pair(tab, t)
         return t
     }
 
-    private fun addTabElement(ref: String, liKlass: String, disabled: Boolean, builder: ElementBuilder = {}): Element {
-        val e = Element(this, {
+    private fun addTabElement(ref: String, liKlass: String, disabled: Boolean, builder: ElementBuilder<A> = {}): StandardDisplayElement {
+        val e = StandardDisplayElement(this, {
             a("#$ref", builder = builder)
         }, "li", "tab $liKlass${if (disabled) " disabled" else ""}")
         +e
@@ -41,15 +42,15 @@ class Tabs internal constructor(parent: Element?, klass: String, vararg attrs: P
 }
 
 @KFrameElementDSL
-fun Element.tabs(fixedWidth: Boolean = true, klass: String = "", vararg attrs: Pair<String, Any>) =
+fun DisplayElement<*>.tabs(fixedWidth: Boolean = true, klass: String = "", vararg attrs: Pair<String, Any>) =
         Tabs(this, "$klass${if (fixedWidth) " tabs-fixed-width" else ""}", *attrs)
 
-class Tab internal constructor(parent: Element?, val tabs: Tabs, klass: String,
-                               liKlass: String, default: Boolean = false, disabled: Boolean, tabBuilder: ElementBuilder,
-                               builder: ElementTypeBuilder<Tab>, vararg attrs: Pair<String, Any>)
-    : TypedElement<Tab>(parent, builder, "div", klass, *attrs) {
+class Tab internal constructor(parent: Element<*>??, val tabs: Tabs, klass: String,
+                               liKlass: String, default: Boolean = false, disabled: Boolean, tabBuilder: ElementBuilder<A>,
+                               builder: ElementBuilder<Tab>, vararg attrs: Pair<String, Any>)
+    : Element<Tab>(parent, builder, "div", klass, *attrs) {
 
-    val listElement: Element
+    val listElement: StandardDisplayElement
 
     init {
         id = "tab${tabs.nextId()}"
@@ -82,5 +83,5 @@ class Tab internal constructor(parent: Element?, val tabs: Tabs, klass: String,
 }
 
 @KFrameElementDSL
-fun Element.tab(tabs: Tabs, klass: String = "", liKlass: String = "", tabBuilder: ElementBuilder = {}, default: Boolean = false, disabled: Boolean = false, vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
+fun DisplayElement<*>.tab(tabs: Tabs, klass: String = "", liKlass: String = "", tabBuilder: ElementBuilder<A> = {}, default: Boolean = false, disabled: Boolean = false, vararg attrs: Pair<String, Any>, builder: ElementBuilder<Tab> = {}) =
         Tab(this, tabs, klass, liKlass, default, disabled, tabBuilder, builder, *attrs)

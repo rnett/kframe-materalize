@@ -1,16 +1,14 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.Element
-import com.rnett.kframe.dom.ElementBuilder
-import com.rnett.kframe.dom.KFrameElementDSL
+import com.rnett.kframe.dom.*
 
 
 @KFrameElementDSL
-fun Element.blockquote(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
-        Element(this, builder, "blockquote", klass, *attrs)
+fun DisplayElement<*>.blockquote(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
+        StandardDisplayElement(this, builder, "blockquote", klass, *attrs)
 
 
-fun <T : Element> T.flowText(): T {
+fun <T : Element<*>> T.flowText(): T {
     this addClass "flow-text"
     return this
 }

@@ -1,39 +1,46 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.Element
-import com.rnett.kframe.dom.ElementBuilder
-import com.rnett.kframe.dom.KFrameElementDSL
+import com.rnett.kframe.dom.*
 import com.rnett.kframe.elements.div
 
 @KFrameElementDSL
-fun Element.row(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
-        div("row $klass", builder = builder, attrs = *attrs)
+class Row(parent: Element<*>?, builder: ElementBuilder<Row>, klass: String, vararg attrs: Pair<String, Any>)
+    : DisplayElement<Row>(parent, builder, "div", "row $klass", *attrs)
 
 @KFrameElementDSL
-fun Element.col(s: Int, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
-        div("col s$s $klass", builder = builder, attrs = *attrs)
+fun DisplayElement<*>.row(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Row> = {}) =
+        Row(this, builder, klass, *attrs)
+
 
 @KFrameElementDSL
-fun Element.col(s: Int, m: Int = 0, l: Int = 0, xl: Int = 0, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
-        div("col s$s${if (m != 0) " m$m" else ""}${if (l != 0) " l$l" else ""}${if (xl != 0) " xl$xl" else ""} $klass", builder = builder, attrs = *attrs)
+class Col(parent: Element<*>?, builder: ElementBuilder<Col>, klass: String, vararg attrs: Pair<String, Any>)
+    : DisplayElement<Col>(parent, builder, "div", "col $klass", *attrs)
 
 @KFrameElementDSL
-fun Element.col(size: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
-        div("col $size $klass", builder = builder, attrs = *attrs)
+fun Row.col(s: Int, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Col> = {}) =
+        Col(this, builder, "s$s $klass", *attrs)
 
 @KFrameElementDSL
-fun Element.divider(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
+fun Row.col(s: Int, m: Int = 0, l: Int = 0, xl: Int = 0, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Col> = {}) =
+        Col(this, builder, "s$s${if (m != 0) " m$m" else ""}${if (l != 0) " l$l" else ""}${if (xl != 0) " xl$xl" else ""} $klass", *attrs)
+
+@KFrameElementDSL
+fun Row.col(size: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<Col> = {}) =
+        Col(this, builder, "$size $klass", *attrs)
+
+@KFrameElementDSL
+fun DisplayElement<*>.divider(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
         div("divider $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun Element.section(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
+fun DisplayElement<*>.section(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
         div("section $klass", builder = builder, attrs = *attrs)
 
 @KFrameElementDSL
-fun Element.container(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder = {}) =
+fun DisplayElement<*>.container(klass: String = "", vararg attrs: Pair<String, Any>, builder: DisplayElementBuilder = {}) =
         div("container $klass", builder = builder, attrs = *attrs)
 
-fun <T : Element> T.offset(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): T {
+fun Col.offset(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): Col {
     if (s != 0)
         this addClass "offset-s$s"
     if (m != 0)
@@ -45,7 +52,7 @@ fun <T : Element> T.offset(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): T {
     return this
 }
 
-fun <T : Element> T.push(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): T {
+fun Col.push(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): Col {
     if (s != 0)
         this addClass "push-s$s"
     if (m != 0)
@@ -57,7 +64,7 @@ fun <T : Element> T.push(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): T {
     return this
 }
 
-fun <T : Element> T.pull(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): T {
+fun Col.pull(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): Col {
     if (s != 0)
         this addClass "pull-s$s"
     if (m != 0)
@@ -69,17 +76,17 @@ fun <T : Element> T.pull(s: Int = 0, m: Int = 0, l: Int = 0, xl: Int = 0): T {
     return this
 }
 
-infix fun <T : Element> T.offset(size: String): T {
+infix fun Col.offset(size: String): Col {
     this addClass "offset-$size"
     return this
 }
 
-infix fun <T : Element> T.push(size: String): T {
+infix fun Col.push(size: String): Col {
     this addClass "push-$size"
     return this
 }
 
-infix fun <T : Element> T.pull(size: String): T {
+infix fun Col.pull(size: String): Col {
     this addClass "pull-$size"
     return this
 }
