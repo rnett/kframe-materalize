@@ -45,10 +45,10 @@ class Tabs internal constructor(parent: Element<*>??, klass: String, vararg attr
 fun AnyDisplayElement.tabs(fixedWidth: Boolean = true, klass: String = "", vararg attrs: Pair<String, Any>) =
         Tabs(this, "$klass${if (fixedWidth) " tabs-fixed-width" else ""}", *attrs)
 
-class Tab internal constructor(parent: Element<*>??, val tabs: Tabs, klass: String,
+class Tab internal constructor(parent: Element<*>?, val tabs: Tabs, klass: String,
                                liKlass: String, default: Boolean = false, disabled: Boolean, tabBuilder: ElementBuilder<A>,
                                builder: ElementBuilder<Tab>, vararg attrs: Pair<String, Any>)
-    : Element<Tab>(parent, builder, "div", klass, *attrs) {
+    : DisplayElement<Tab>(parent, builder, "div", klass, *attrs) {
 
     val listElement: StandardDisplayElement
 
