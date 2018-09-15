@@ -3,7 +3,7 @@ import java.net.URL
 
 plugins {
     java
-    kotlin("jvm") version "1.2.61"
+    kotlin("jvm") version "1.2.70"
     `maven-publish`
     maven
 }
