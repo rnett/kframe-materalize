@@ -1,12 +1,12 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.AnyDisplayElement
-import com.rnett.kframe.dom.KFrameElementDSL
-import com.rnett.kframe.dom.StandardDisplayElement
-import com.rnett.kframe.dom.Style
-import com.rnett.kframe.elements.externalStylesheet
-import com.rnett.kframe.elements.i
-import com.rnett.kframe.elements.text
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayElement
+import com.rnett.kframe.dom.externalStylesheet
+import com.rnett.kframe.dom.i
+import com.rnett.kframe.dom.text
+import com.rnett.kframe.element.KFrameElementDSL
+import com.rnett.kframe.element.Style
 
 @KFrameElementDSL
 fun AnyDisplayElement.icon(icon: String, klass: String = "", vararg attrs: Pair<String, Any>): StandardDisplayElement {

@@ -1,9 +1,13 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.*
-import com.rnett.kframe.elements.ListElement
-import com.rnett.kframe.elements.li
-import com.rnett.kframe.elements.ul
+import com.rnett.kframe.dom.ListElement
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.dom.li
+import com.rnett.kframe.dom.ul
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.ElementBuilder
+import com.rnett.kframe.element.KFrameElementDSL
 
 @KFrameElementDSL
 fun AnyDisplayElement.collection(klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ListElement> = {}) =
@@ -25,12 +29,12 @@ fun ListElement.collectionItemAvatar(klass: String = "", vararg attrs: Pair<Stri
 fun ListElement.collectionItemActive(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         li("collection-item $klass", builder = builder, attrs = *attrs).active()
 
-fun <T : Element<*>> T.secondaryContent(): T {
+fun <T : AnyElement> T.secondaryContent(): T {
     this addClass "secondary-content"
     return this
 }
 
-fun <T : Element<*>> T.avatar(): T {
+fun <T : AnyElement> T.avatar(): T {
     this addClass "avatar"
     return this
 }

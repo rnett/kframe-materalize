@@ -1,10 +1,15 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.*
-import com.rnett.kframe.elements.A
-import com.rnett.kframe.elements.div
+import com.rnett.kframe.dom.classes.A
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.DisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.dom.div
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.ElementBuilder
+import com.rnett.kframe.element.KFrameElementDSL
 
-class Modal internal constructor(parent: Element<*>??, klass: String, builder: ElementBuilder<Modal>, vararg attrs: Pair<String, Any>)
+class Modal internal constructor(parent: AnyElement??, klass: String, builder: ElementBuilder<Modal>, vararg attrs: Pair<String, Any>)
     : DisplayElement<Modal>(parent, builder, "div", "modal $klass", *attrs) {
 
     init {

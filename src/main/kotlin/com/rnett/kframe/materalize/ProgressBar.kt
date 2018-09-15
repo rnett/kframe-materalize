@@ -1,10 +1,10 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.AnyDisplayElement
-import com.rnett.kframe.dom.KFrameElementDSL
-import com.rnett.kframe.dom.StandardDisplayBuilder
-import com.rnett.kframe.elements.div
-import com.rnett.kframe.elements.divs
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.dom.div
+import com.rnett.kframe.dom.divs
+import com.rnett.kframe.element.KFrameElementDSL
 
 @KFrameElementDSL
 fun AnyDisplayElement.progressBarStatic(progressPercent: Int, barKlass: String = "", backgroundKlass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =

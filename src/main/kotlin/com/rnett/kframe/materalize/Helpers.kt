@@ -1,7 +1,15 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.*
-import com.rnett.kframe.elements.*
+import com.rnett.kframe.dom.a
+import com.rnett.kframe.dom.classes.A
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.ImageElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.dom.div
+import com.rnett.kframe.dom.img
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.ElementBuilder
+import com.rnett.kframe.element.KFrameElementDSL
 import java.lang.Math.abs
 
 @KFrameElementDSL
@@ -16,59 +24,59 @@ fun AnyDisplayElement.centerAlign(klass: String = "", vararg attrs: Pair<String,
 fun AnyDisplayElement.middleAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("center-align valign-wrapper $klass", builder = builder, attrs = *attrs)
 
-fun <T : Element<*>> T.valAlignThis(): T {
+fun <T : AnyElement> T.valAlignThis(): T {
     this addClass "valign-wrapper"
     return this
 }
 
-fun <T : Element<*>> T.leftAlign(): T {
+fun <T : AnyElement> T.leftAlign(): T {
     this addClass "left-align"
     return this
 }
 
-fun <T : Element<*>> T.centerAlignThis(): T {
+fun <T : AnyElement> T.centerAlignThis(): T {
     this addClass "center-align"
     return this
 }
 
-fun <T : Element<*>> T.middleAlignThis(): T {
+fun <T : AnyElement> T.middleAlignThis(): T {
     this addClass "center-align"
     this addClass "valign-wrapper"
     return this
 }
 
-fun <T : Element<*>> T.rightAlign(): T {
+fun <T : AnyElement> T.rightAlign(): T {
     this addClass "right-align"
     return this
 }
 
 
-fun <T : Element<*>> T.left(): T {
+fun <T : AnyElement> T.left(): T {
     this addClass "left"
     return this
 }
 
-fun <T : Element<*>> T.center(): T {
+fun <T : AnyElement> T.center(): T {
     this addClass "center"
     return this
 }
 
-fun <T : Element<*>> T.right(): T {
+fun <T : AnyElement> T.right(): T {
     this addClass "right"
     return this
 }
 
-fun <T : Element<*>> T.pulse(): T {
+fun <T : AnyElement> T.pulse(): T {
     this addClass "pulse"
     return this
 }
 
-infix fun <T : Element<*>> T.zDepth(depth: Int): T {
+infix fun <T : AnyElement> T.zDepth(depth: Int): T {
     this addClass "z-depth-$depth"
     return this
 }
 
-fun <T : Element<*>> T.color(color: String, lighten: Int = 0): T {
+fun <T : AnyElement> T.color(color: String, lighten: Int = 0): T {
     this addClass color
     if (lighten > 0)
         this addClass "lighten-$lighten"
@@ -77,7 +85,7 @@ fun <T : Element<*>> T.color(color: String, lighten: Int = 0): T {
     return this
 }
 
-fun <T : Element<*>> T.textColor(color: String, lighten: Int = 0): T {
+fun <T : AnyElement> T.textColor(color: String, lighten: Int = 0): T {
     this addClass "$color-text"
     if (lighten > 0)
         this addClass "text-lighten-$lighten"
@@ -86,17 +94,17 @@ fun <T : Element<*>> T.textColor(color: String, lighten: Int = 0): T {
     return this
 }
 
-fun <T : Element<*>> T.active(): T {
+fun <T : AnyElement> T.active(): T {
     this addClass "active"
     return this
 }
 
-fun <T : Element<*>> T.inactive(): T {
+fun <T : AnyElement> T.inactive(): T {
     this.classes.remove("active")
     return this
 }
 
-infix fun <T : Element<*>> T.activate(active: Boolean): T {
+infix fun <T : AnyElement> T.activate(active: Boolean): T {
     return if (active) active() else inactive()
 }
 
@@ -104,7 +112,7 @@ infix fun <T : Element<*>> T.activate(active: Boolean): T {
 fun AnyDisplayElement.responsiveImage(src: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<ImageElement> = {}) =
         img(src, klass = "responsive-img $klass", builder = builder, attrs = *attrs)
 
-fun <T : Element<*>> T.circle(): T {
+fun <T : AnyElement> T.circle(): T {
     this addClass "circle"
     return this
 }
@@ -113,32 +121,32 @@ fun <T : Element<*>> T.circle(): T {
 fun AnyDisplayElement.breadcrumb(href: String, klass: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
         a(href, "breadcrumb $klass", builder = builder, attrs = *attrs)
 
-infix fun <T : Element<*>> T.waves(color: String): T {
+infix fun <T : AnyElement> T.waves(color: String): T {
     this addClass "waves-effect"
     if (color.isNotBlank())
         this addClass "waves-$color"
     return this
 }
 
-infix fun <T : Element<*>> T.wavesCircle(color: String): T {
+infix fun <T : AnyElement> T.wavesCircle(color: String): T {
     this addClass "waves-effect waves-circle "
     if (color.isNotBlank())
         this addClass "waves-$color"
     return this
 }
 
-fun <T : Element<*>> T.wavesLight() = this.waves("light")
+fun <T : AnyElement> T.wavesLight() = this.waves("light")
 
 @KFrameElementDSL
 fun AnyDisplayElement.inputField(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("input-field $klass", builder = builder, attrs = *attrs)
 
-fun <T : Element<*>> T.inputFieldThis(): T {
+fun <T : AnyElement> T.inputFieldThis(): T {
     this addClass "input-field"
     return this
 }
 
-fun <T : Element<*>> T.hoverable(): T {
+fun <T : AnyElement> T.hoverable(): T {
     this addClass "hoverable"
     return this
 }

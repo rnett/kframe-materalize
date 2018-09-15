@@ -1,10 +1,11 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.AnyDisplayElement
-import com.rnett.kframe.dom.ElementBuilder
-import com.rnett.kframe.dom.KFrameElementDSL
-import com.rnett.kframe.dom.StandardDisplayBuilder
-import com.rnett.kframe.elements.*
+import com.rnett.kframe.dom.*
+import com.rnett.kframe.dom.classes.A
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.element.ElementBuilder
+import com.rnett.kframe.element.KFrameElementDSL
 
 @KFrameElementDSL
 fun AnyDisplayElement.navbar(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =

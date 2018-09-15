@@ -1,10 +1,11 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.AnyDisplayElement
-import com.rnett.kframe.dom.Element
-import com.rnett.kframe.dom.ElementBuilder
-import com.rnett.kframe.dom.KFrameElementDSL
-import com.rnett.kframe.elements.*
+import com.rnett.kframe.dom.*
+import com.rnett.kframe.dom.classes.A
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.ElementBuilder
+import com.rnett.kframe.element.KFrameElementDSL
 
 @KFrameElementDSL
 fun AnyDisplayElement.btn(klass: String = "", href: String = "", vararg attrs: Pair<String, Any>, builder: ElementBuilder<A> = {}) =
@@ -19,22 +20,22 @@ fun AnyDisplayElement.flatBtn(klass: String = "", href: String = "", vararg attr
         a(href, "btn-flat $klass", builder = builder, attrs = *attrs)
 
 
-fun <T : Element<*>> T.btnThis(): T {
+fun <T : AnyElement> T.btnThis(): T {
     this addClass "btn"
     return this
 }
 
-fun <T : Element<*>> T.flatBtnThis(): T {
+fun <T : AnyElement> T.flatBtnThis(): T {
     this addClass "btn-flat"
     return this
 }
 
-infix fun <T : Element<*>> T.btnThis(value: String): T {
+infix fun <T : AnyElement> T.btnThis(value: String): T {
     this addClass "btn-$value"
     return this
 }
 
-fun <T : Element<*>> T.disabled(): T {
+fun <T : AnyElement> T.disabled(): T {
     this addClass "disabled"
     return this
 }

@@ -1,10 +1,16 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.*
-import com.rnett.kframe.elements.A
-import com.rnett.kframe.elements.a
+import com.rnett.kframe.dom.a
+import com.rnett.kframe.dom.classes.A
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.DisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayElement
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.Element
+import com.rnett.kframe.element.ElementBuilder
+import com.rnett.kframe.element.KFrameElementDSL
 
-class Tabs internal constructor(parent: Element<*>??, klass: String, vararg attrs: Pair<String, Any>)
+class Tabs internal constructor(parent: AnyElement??, klass: String, vararg attrs: Pair<String, Any>)
     : Element<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
@@ -45,7 +51,7 @@ class Tabs internal constructor(parent: Element<*>??, klass: String, vararg attr
 fun AnyDisplayElement.tabs(fixedWidth: Boolean = true, klass: String = "", vararg attrs: Pair<String, Any>) =
         Tabs(this, "$klass${if (fixedWidth) " tabs-fixed-width" else ""}", *attrs)
 
-class Tab internal constructor(parent: Element<*>?, val tabs: Tabs, klass: String,
+class Tab internal constructor(parent: AnyElement?, val tabs: Tabs, klass: String,
                                liKlass: String, default: Boolean = false, disabled: Boolean, tabBuilder: ElementBuilder<A>,
                                builder: ElementBuilder<Tab>, vararg attrs: Pair<String, Any>)
     : DisplayElement<Tab>(parent, builder, "div", klass, *attrs) {

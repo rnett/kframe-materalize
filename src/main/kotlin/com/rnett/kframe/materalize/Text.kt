@@ -1,6 +1,10 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.*
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.dom.classes.StandardDisplayElement
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.KFrameElementDSL
 
 
 @KFrameElementDSL
@@ -8,7 +12,7 @@ fun AnyDisplayElement.blockquote(klass: String = "", vararg attrs: Pair<String, 
         StandardDisplayElement(this, builder, "blockquote", klass, *attrs)
 
 
-fun <T : Element<*>> T.flowText(): T {
+fun <T : AnyElement> T.flowText(): T {
     this addClass "flow-text"
     return this
 }

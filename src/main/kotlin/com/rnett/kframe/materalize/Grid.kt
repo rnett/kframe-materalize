@@ -1,10 +1,15 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.*
-import com.rnett.kframe.elements.div
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.DisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.dom.div
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.ElementBuilder
+import com.rnett.kframe.element.KFrameElementDSL
 
 @KFrameElementDSL
-class Row(parent: Element<*>?, builder: ElementBuilder<Row>, klass: String, vararg attrs: Pair<String, Any>)
+class Row(parent: AnyElement?, builder: ElementBuilder<Row>, klass: String, vararg attrs: Pair<String, Any>)
     : DisplayElement<Row>(parent, builder, "div", "row $klass", *attrs)
 
 @KFrameElementDSL
@@ -13,7 +18,7 @@ fun AnyDisplayElement.row(klass: String = "", vararg attrs: Pair<String, Any>, b
 
 
 @KFrameElementDSL
-class Col(parent: Element<*>?, builder: ElementBuilder<Col>, klass: String, vararg attrs: Pair<String, Any>)
+class Col(parent: AnyElement?, builder: ElementBuilder<Col>, klass: String, vararg attrs: Pair<String, Any>)
     : DisplayElement<Col>(parent, builder, "div", "col $klass", *attrs)
 
 @KFrameElementDSL

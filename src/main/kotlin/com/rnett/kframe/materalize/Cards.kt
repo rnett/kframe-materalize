@@ -1,9 +1,13 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.*
-import com.rnett.kframe.elements.div
-import com.rnett.kframe.elements.span
-import com.rnett.kframe.elements.text
+import com.rnett.kframe.dom.classes.AnyDisplayElement
+import com.rnett.kframe.dom.classes.StandardDisplayBuilder
+import com.rnett.kframe.dom.classes.StandardDisplayElement
+import com.rnett.kframe.dom.div
+import com.rnett.kframe.dom.span
+import com.rnett.kframe.dom.text
+import com.rnett.kframe.element.AnyElement
+import com.rnett.kframe.element.KFrameElementDSL
 
 @KFrameElementDSL
 fun AnyDisplayElement.contentCard(cardKlass: String = "", contentKlass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
@@ -17,12 +21,12 @@ fun AnyDisplayElement.card(sticky: Boolean = false, klass: String = "", vararg a
 fun AnyDisplayElement.card(size: String, sticky: Boolean = false, klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("card $size${if (sticky) " sticky-action" else ""} $klass", builder = builder, attrs = *attrs)
 
-fun <T : Element<*>> T.stickyAction(): T {
+fun <T : AnyElement> T.stickyAction(): T {
     this addClass "sticky-action"
     return this
 }
 
-infix fun <T : Element<*>> T.size(size: String): T {
+infix fun <T : AnyElement> T.size(size: String): T {
     this addClass "size"
     return this
 }

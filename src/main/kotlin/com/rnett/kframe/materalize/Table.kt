@@ -1,6 +1,6 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.elements.TableElement
+import com.rnett.kframe.dom.classes.TableElement
 
 
 fun TableElement.striped(): TableElement {
