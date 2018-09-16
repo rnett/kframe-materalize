@@ -14,9 +14,7 @@ class Tabs internal constructor(parent: AnyElement?, klass: String, vararg attrs
     : Element<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
-        //this runJS "window.setTimeout(function(){ \$('.tabs').tabs(); }, 100);"
-        //this runJS "\$(document).ready(function(){ \$('.tabs').tabs(); });"
-        this runJS "\$('.tabs').tabs();console.log('done');"
+        this runJS "\$('.tabs').tabs();"
     }
 
     private val tabs = mutableMapOf<String, Pair<Tab, StandardDisplayElement>>()

@@ -14,8 +14,7 @@ class Modal internal constructor(parent: AnyElement?, klass: String, builder: El
 
     init {
         id = "modal${nextId()}"
-        this runJS "window.setTimeout(function(){ \$('.modal').modal(); }, 200);"
-        this runJS "\$(document).ready(function(){ \$('.modal').modal(); });"
+        this runJS "\$('.modal').modal();"
     }
 
     fun open() {
