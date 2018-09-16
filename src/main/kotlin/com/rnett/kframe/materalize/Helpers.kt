@@ -1,16 +1,17 @@
 package com.rnett.kframe.materalize
 
-import com.rnett.kframe.dom.a
-import com.rnett.kframe.dom.classes.A
-import com.rnett.kframe.dom.classes.AnyDisplayElement
-import com.rnett.kframe.dom.classes.ImageElement
-import com.rnett.kframe.dom.classes.StandardDisplayBuilder
-import com.rnett.kframe.dom.div
-import com.rnett.kframe.dom.img
+import com.rnett.kframe.dom.*
+import com.rnett.kframe.dom.classes.*
 import com.rnett.kframe.element.AnyElement
 import com.rnett.kframe.element.ElementBuilder
 import com.rnett.kframe.element.KFrameElementDSL
 import java.lang.Math.abs
+
+@KFrameElementDSL
+fun Head.materalize() {
+    externalStylesheet("/css/materialize.min.css", attrs = *arrayOf("media" to "screen,projection"))
+    scriptFrom("/js/materialize.min.js")
+}
 
 @KFrameElementDSL
 fun AnyDisplayElement.valAlign(klass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =

@@ -14,8 +14,9 @@ class Tabs internal constructor(parent: AnyElement?, klass: String, vararg attrs
     : Element<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {
-        this runJS "window.setTimeout(function(){ \$('.tabs').tabs(); }, 100);"
-        this runJS "\$(document).ready(function(){ \$('.tabs').tabs(); });"
+        //this runJS "window.setTimeout(function(){ \$('.tabs').tabs(); }, 100);"
+        //this runJS "\$(document).ready(function(){ \$('.tabs').tabs(); });"
+        this runJS "\$('.tabs').tabs();console.log('done');"
     }
 
     private val tabs = mutableMapOf<String, Pair<Tab, StandardDisplayElement>>()
@@ -91,3 +92,7 @@ class Tab internal constructor(parent: AnyElement?, val tabs: Tabs, klass: Strin
 @KFrameElementDSL
 fun AnyDisplayElement.tab(tabs: Tabs, klass: String = "", liKlass: String = "", tabBuilder: ElementBuilder<A> = {}, default: Boolean = false, disabled: Boolean = false, vararg attrs: Pair<String, Any>, builder: ElementBuilder<Tab> = {}) =
         Tab(this, tabs, klass, liKlass, default, disabled, tabBuilder, builder, *attrs)
+
+@KFrameElementDSL
+fun AnyDisplayElement.tab(tabs: Tabs, tabTitle: String, klass: String = "", liKlass: String = "", default: Boolean = false, disabled: Boolean = false, vararg attrs: Pair<String, Any>, builder: ElementBuilder<Tab> = {}) =
+        Tab(this, tabs, klass, liKlass, default, disabled, { +tabTitle }, builder, *attrs)
