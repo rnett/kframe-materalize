@@ -7,6 +7,8 @@ import com.rnett.kframe.dom.i
 import com.rnett.kframe.dom.text
 import com.rnett.kframe.element.KFrameElementDSL
 import com.rnett.kframe.element.Style
+import com.rnett.kframe.element.cssStyle
+import com.rnett.kframe.element.px
 
 @KFrameElementDSL
 fun AnyDisplayElement.icon(icon: String, klass: String = "", vararg attrs: Pair<String, Any>): StandardDisplayElement {
@@ -25,8 +27,8 @@ fun AnyDisplayElement.icon(icon: String, size: String, klass: String = "", varar
 
 @KFrameElementDSL
 fun AnyDisplayElement.fontSizedIcon(icon: String, fontSize: String, klass: String = "", vararg attrs: Pair<String, Any>) =
-        icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to fontSize)))
+        icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to fontSize.cssStyle)))
 
 @KFrameElementDSL
 fun AnyDisplayElement.fontSizedIcon(icon: String, fontSize: Int, klass: String = "", vararg attrs: Pair<String, Any>) =
-        icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to "${fontSize}px")))
+        icon(icon = icon, klass = klass, attrs = *arrayOf(*attrs, "style" to Style("font-size" to fontSize.px)))

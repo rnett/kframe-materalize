@@ -10,7 +10,7 @@ import com.rnett.kframe.element.Element
 import com.rnett.kframe.element.ElementBuilder
 import com.rnett.kframe.element.KFrameElementDSL
 
-class Tabs internal constructor(parent: AnyElement??, klass: String, vararg attrs: Pair<String, Any>)
+class Tabs internal constructor(parent: AnyElement?, klass: String, vararg attrs: Pair<String, Any>)
     : Element<Tabs>(parent, {}, "ul", "tabs $klass", *attrs) {
 
     init {

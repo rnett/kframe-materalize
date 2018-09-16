@@ -5,11 +5,12 @@ import com.rnett.kframe.dom.classes.StandardDisplayBuilder
 import com.rnett.kframe.dom.div
 import com.rnett.kframe.dom.divs
 import com.rnett.kframe.element.KFrameElementDSL
+import com.rnett.kframe.element.`%`
 
 @KFrameElementDSL
 fun AnyDisplayElement.progressBarStatic(progressPercent: Int, barKlass: String = "", backgroundKlass: String = "", vararg attrs: Pair<String, Any>, builder: StandardDisplayBuilder = {}) =
         div("progress $backgroundKlass").div("determinate $barKlass", builder = builder, attrs = *attrs).invoke {
-            style.width = "$progressPercent%"
+            style.width = progressPercent.`%`
         }
 
 @KFrameElementDSL

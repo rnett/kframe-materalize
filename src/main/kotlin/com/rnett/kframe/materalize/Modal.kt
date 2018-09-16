@@ -9,7 +9,7 @@ import com.rnett.kframe.element.AnyElement
 import com.rnett.kframe.element.ElementBuilder
 import com.rnett.kframe.element.KFrameElementDSL
 
-class Modal internal constructor(parent: AnyElement??, klass: String, builder: ElementBuilder<Modal>, vararg attrs: Pair<String, Any>)
+class Modal internal constructor(parent: AnyElement?, klass: String, builder: ElementBuilder<Modal>, vararg attrs: Pair<String, Any>)
     : DisplayElement<Modal>(parent, builder, "div", "modal $klass", *attrs) {
 
     init {
